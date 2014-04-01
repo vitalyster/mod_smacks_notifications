@@ -62,7 +62,7 @@ function handle_notifications_command(event)
 	 session.send(st.reply(stanza));
       end
       local prefs = stanza.tags[1].tags[1];
-      if prefs.name == "prefs" then
+      if prefs and prefs.name == "prefs" then
 	 local default = prefs.attr.default;
 	 if default then
 	    session.notifications_default = default;
@@ -107,7 +107,7 @@ end
 function handle_smacks_message(event)
    local session, stanza = event.origin, event.stanza;
    module:log("debug", "message to %s", session.full_jid);
-   if stanza.attr.type == "groupchat" and session.notifications_default = "roster" then
+   if stanza.attr.type == "groupchat" and session.notifications_default == "roster" then
       module:log("debug", "%s does not want to be notified about groupchat messages", stanza.attr.from);
       return;
    end
