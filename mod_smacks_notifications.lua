@@ -61,6 +61,14 @@ function handle_notifications_command(event)
 	 module:log("debug", "Assigned GCM regid=%s to %s", session.regid, stanza.attr.from);
 	 session.send(st.reply(stanza));
       end
+      local prefs = stanza.tags[1].tags[1];
+      if prefs.name == "prefs" then
+	 local default = prefs.attr.default;
+	 if default then
+	    session.notifications_default = default;
+	    module:log("debug", "Default preferences for %s changed to %s", stanza.attr.from, default);
+	    end
+	 end
       return true;
    elseif stanza.tags[1].name == "unregister" then
       -- remove device
@@ -99,6 +107,14 @@ end
 function handle_smacks_message(event)
    local session, stanza = event.origin, event.stanza;
    module:log("debug", "message to %s", session.full_jid);
+   if stanza.attr.type == "groupchat" and session.notifications_default = "roster" then
+      module:log("debug", "%s does not want to be notified about groupchat messages", stanza.attr.from);
+      return;
+   end
+   if session.notifications_default == "off" then
+      module:log("debug", "%s does not want to be notified", stanza.attr.from);
+      return;
+   end
    if session.regid ~= nil then
       if GCM_API_KEY ~= nil then
 	 -- send message to GCM
