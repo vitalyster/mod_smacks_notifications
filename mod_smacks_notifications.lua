@@ -108,7 +108,7 @@ function handle_smacks_message(event)
    local session, stanza = event.origin, event.stanza;
    module:log("debug", "message to %s", session.full_jid);
    if stanza.attr.type == "groupchat" and session.notifications_default == "roster" then
-      module:log("debug", "%s does not want to be notified about groupchat messages", stanza.attr.from);
+      module:log("debug", "%s does not want to be notified about groupchat messages", stanza.attr.to);
       return;
    end
    if session.notifications_default == "off" then
