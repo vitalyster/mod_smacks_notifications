@@ -5,8 +5,8 @@ Apple Push Notifications and Google Cloud Messaging module for Prosody
 
 Requirements and installation
 -----------------------------
-1. Prosody
-2. mod_smacks
+1. [Prosody](http://prosody.im)
+2. [mod_smacks](https://code.google.com/p/prosody-modules/wiki/mod_smacks)
 3. `smacks_hibernation_time` should be set much higher than default value, e.g. `86400` (session will stay 24 hours)
 4. patch for mod_smacks:
 ```lua
@@ -44,6 +44,10 @@ S: <feature var="http://sawim.ru/notifications#apn"/>
 S: [...]
 S: </iq>
 ```
+
+Of course, server and should also supports [Stream Management](http://xmpp.org/extensions/xep-0198.html) protocol and it *must* be enabled in the client session before it can enable push notifications
+
+
 ### Registering device for receiving notifications
 
 Android client must send `deviceid` received when he register Cloud Messaging session
