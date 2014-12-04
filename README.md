@@ -62,7 +62,7 @@ C: </iq>
 And iOS client must send similar device token received when he registered APNS notifications
 ```xml
 C: <iq id="234567" type="set">
-C: <register xmlns="http://sawim.ru/notifications#gcm"
+C: <register xmlns="http://sawim.ru/notifications#apn"
 C: token="{device_token_hex}"/>
 C: </iq>
 ```
