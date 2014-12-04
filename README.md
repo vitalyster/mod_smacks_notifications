@@ -47,7 +47,7 @@ S: [...]
 S: </iq>
 ```
 
-Of course, server and should also supports [Stream Management](http://xmpp.org/extensions/xep-0198.html) protocol and it *must* be enabled in the client session before it can enable push notifications
+Of course, server and client should also supports [Stream Management](http://xmpp.org/extensions/xep-0198.html) protocol and it *must* be enabled in the client session before it can enable push notifications
 
 
 ### Registering device for receiving notifications
