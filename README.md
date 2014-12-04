@@ -26,7 +26,9 @@ Requirements and installation
 Configuration parameters
 ------------------------
 `gcm_api_key` - Google Cloud Messaging key for your Android application (you should generate it in Google API Console)
+
 `apn_key_file` and `apn_certificate` - APNS key and certificate for your iOS application
+
 Usage
 -----
 ### Determining server support 
