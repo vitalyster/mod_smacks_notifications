@@ -10,18 +10,18 @@ Requirements and installation
 3. `smacks_hibernation_time` should be set much higher than default value, e.g. `86400` (session will stay 24 hours)
 4. patch for mod_smacks:
 ```lua
---- a/mod_smacks/mod_smacks.lua Sat Feb 22 13:26:22 2014 +0100
-+++ b/mod_smacks/mod_smacks.lua Sun Mar 02 21:04:40 2014 +0000
-@@ -93,6 +93,9 @@
-                        queue[#queue+1] = cached_stanza;
-                end
+--- mod_smacks.lua.orig 2015-05-19 10:50:08 +0300
++++ mod_smacks.lua      2015-05-19 10:58:00 +0300
+@@ -83,6 +83,9 @@
+                queue[#queue+1] = cached_stanza;
+                session.log("debug", "#queue = %d", #queue);
                 if session.hibernating then
 +                       if stanza.name == "message" and stanza:get_child("body") ~= nil then
 +                               module:fire_event("smacks-message", {origin = session, stanza = stanza});
 +                       end
-                        -- The session is hibernating, no point in sending the stanza
-                        -- over a dead connection.  It will be delivered upon resumption.
-                        return true;
+                        session.log("debug", "hibernating, stanza queued");
+                        return ""; -- Hack to make session.send() not return nil
+                end
 ```
 Configuration parameters
 ------------------------
