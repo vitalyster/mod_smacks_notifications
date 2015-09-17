@@ -5,10 +5,11 @@ Apple Push Notifications and Google Cloud Messaging module for Prosody
 
 Requirements and installation
 -----------------------------
-1. [Prosody](http://prosody.im)
-2. [mod_smacks](https://code.google.com/p/prosody-modules/wiki/mod_smacks)
-3. `smacks_hibernation_time` should be set much higher than default value, e.g. `86400` (session will stay 24 hours)
-4. patch for mod_smacks:
+1. [LuaPack](http://lua-users.org/wiki/LuaPack) module for Lua
+2. [Prosody](http://prosody.im)
+3. [mod_smacks](https://code.google.com/p/prosody-modules/wiki/mod_smacks)
+4. `smacks_hibernation_time` should be set much higher than default value, e.g. `86400` (session will stay 24 hours)
+5. patch for mod_smacks:
 ```lua
 --- mod_smacks.lua.orig 2015-05-19 10:50:08 +0300
 +++ mod_smacks.lua      2015-05-19 10:58:00 +0300
